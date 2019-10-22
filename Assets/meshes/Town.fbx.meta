@@ -1,69 +1,18 @@
 fileFormatVersion: 2
-guid: f6b2019ae1c2f924892ccfc3e9888354
+guid: d2ab941aec24dd14fb49f15790217752
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: BezierCurve
-    100002: Cube
-    100004: Cube.001
-    100006: Cube.002
-    100008: Cube.003
-    100010: Cube.004
-    100012: Cube.005
-    100014: Cube.006
-    100016: Cube.007
-    100018: Cylinder
-    100020: //RootNode
-    400000: BezierCurve
-    400002: Cube
-    400004: Cube.001
-    400006: Cube.002
-    400008: Cube.003
-    400010: Cube.004
-    400012: Cube.005
-    400014: Cube.006
-    400016: Cube.007
-    400018: Cylinder
-    400020: //RootNode
-    2100000: MinieraAlberoFoglie
-    2100002: MinieraAlberoTRonco
-    2100004: MinieraBinariMetal
-    2100006: MinieraBinariLegno
-    2100008: MinieraIngressoLegno
-    2100010: MinieraIngresso
-    2100012: MinieraMassi
-    2100014: MinieraBase
-    2300000: BezierCurve
-    2300002: Cube
-    2300004: Cube.001
-    2300006: Cube.002
-    2300008: Cube.003
-    2300010: Cube.004
-    2300012: Cube.005
-    2300014: Cube.006
-    2300016: Cube.007
-    2300018: Cylinder
-    3300000: BezierCurve
-    3300002: Cube
-    3300004: Cube.001
-    3300006: Cube.002
-    3300008: Cube.003
-    3300010: Cube.004
-    3300012: Cube.005
-    3300014: Cube.006
-    3300016: Cube.007
-    3300018: Cylinder
-    4300000: Cube.007
-    4300002: Cube.006
-    4300004: Cube.005
-    4300006: Cube.004
-    4300008: Cube.003
-    4300010: BezierCurve
-    4300012: Cube.002
-    4300014: Cube.001
-    4300016: Cube
-    4300018: Cylinder
-    2186277476908879412: ImportLogs
+    100000: //RootNode
+    400000: //RootNode
+    2100000: VillaggioBase
+    2100002: VillaggioAlberoTronco
+    2100004: VillaggioAlberoFoglie
+    2100006: VillaggioFinestra
+    2100008: VillaggioEdificio
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cylinder
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -1,36 +1,16 @@
 fileFormatVersion: 2
-guid: 16537b4fd8b35b642a3861db40b3ffc0
+guid: 6f521f5cc9ca7fa40a4271f9e4fe4533
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Camera
-    100002: Cube
-    100004: Cube.001
-    100006: Cylinder
-    100008: //RootNode
-    100010: Lamp
-    400000: Camera
-    400002: Cube
-    400004: Cube.001
-    400006: Cylinder
-    400008: //RootNode
-    400010: Lamp
-    2000000: Camera
-    2100000: LagoAlberoTronco
-    2100002: LagoAlberoFoglie
-    2100004: LagoAcqua
-    2100006: LagoBase
-    2300000: Cube
-    2300002: Cube.001
-    2300004: Cylinder
-    3300000: Cube
-    3300002: Cube.001
-    3300004: Cylinder
-    4300000: Cube.001
-    4300002: Cylinder
-    4300004: Cube
-    10800000: Lamp
-    2186277476908879412: ImportLogs
+    100000: //RootNode
+    400000: //RootNode
+    2100000: ForestaAlberoTronco
+    2100002: ForestaAlberoFoglie
+    2100004: ForestaTerreno
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube.015
   externalObjects: {}
   materials:
     importMaterials: 1

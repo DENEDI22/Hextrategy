@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 24ceda7ce91547f4b8b2a34743909c1f, type: 2}
+  - {fileID: 2100000, guid: 2877289d8ae76be4a82f79a4560bc81e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -852,10 +852,13 @@ MonoBehaviour:
   flag: {fileID: 7395635789290727762}
   isFree: 1
   player: {fileID: 0}
+  neighbour: []
+  tileMeshes: []
   givesIP: 0
   givesFood: 0
   givesWood: 0
   givesMinerals: 0
+  needInfluenceToTakeOver: 10
 --- !u!1001 &7138820581415518271
 PrefabInstance:
   m_ObjectHideFlags: 0

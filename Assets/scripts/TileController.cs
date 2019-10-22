@@ -13,8 +13,11 @@ public class TileController : MonoBehaviour
     public bool isFree;
     public PlayerController player;
 
+
     [SerializeField]
     public TileController[] neighbour;
+    [SerializeField]
+    GameObject[] tileMeshes;
 
     [Header("Resourses from this tile")]
     public int givesIP;
@@ -23,6 +26,7 @@ public class TileController : MonoBehaviour
     public int givesMinerals;
 
     public int needInfluenceToTakeOver = 10;
+
 
     int tmpGeneration;
     int buildingGeneration;
@@ -48,7 +52,8 @@ public class TileController : MonoBehaviour
             {
                 typeOfTile = "water";
                 needInfluenceToTakeOver = 12;
-                GetComponent<MeshRenderer>().material.color = Color.cyan;
+                //GetComponent<MeshRenderer>().material.color = Color.cyan;
+                SetMesh(4);
                 if (buildingGeneration < 5)
                 {
                     AddBuilding("pier", false);
@@ -64,7 +69,9 @@ public class TileController : MonoBehaviour
             {
                 typeOfTile = "forest";
                 needInfluenceToTakeOver = 12;
-                GetComponent<MeshRenderer>().material.color = Color.green;
+                //GetComponent<MeshRenderer>().material.color = Color.green;
+                SetMesh(3);
+                
                 if (buildingGeneration < 4)
                 {
                     needInfluenceToTakeOver = 28;
@@ -89,7 +96,9 @@ public class TileController : MonoBehaviour
             else
             {
                 typeOfTile = "field";
-                GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.green, Color.white, 0.3f);
+                //GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.green, Color.white, 0.3f);
+                SetMesh(2);
+                
                 if (buildingGeneration == 15)
                 {
                     needInfluenceToTakeOver = 50;
@@ -159,13 +168,24 @@ public class TileController : MonoBehaviour
         givesMinerals = Minerals;
     }
 
+    public void SetMesh(int meshnum)
+    {
+        foreach (var item in tileMeshes)
+        {
+            item.SetActive(false);
+        }
+        tileMeshes[meshnum].SetActive(true);
+    }
+
     public void AddBuilding(string building, bool isByPlayer)
     {
         if (isByPlayer && isFree)
         {
             if (building == "farm" && typeOfTile != "water" && player.wood >= 60)
             {
-                GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+                //GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+                SetMesh(6);
+                //TUT BUDUT OVTSI
                 player.GiveResourses(0, 60, 0, 0);
                 isFree = false;
                 ChangeStats(0, 3, 0, 0);
@@ -173,28 +193,32 @@ public class TileController : MonoBehaviour
             }
             else if (building == "mine" && player.wood >= 20 && player.food >= 50)
             {
-                GetComponent<MeshRenderer>().material.color = Color.black;
+                //GetComponent<MeshRenderer>().material.color = Color.black;
+                SetMesh(5);
+                
                 player.GiveResourses(0, 20, 50, 0);
                 isFree = false;
                 ChangeStats(1, -1, 0, 3);
             }
             else if (building == "town"  && player.wood >= 50 && player.food >= 70 && player.minerals >= 50)
             {
-                GetComponent<MeshRenderer>().material.color = Color.gray;
+                //GetComponent<MeshRenderer>().material.color = Color.gray;
+                SetMesh(7);
+                
                 player.GiveResourses(0, 50, 70, 50);
                 isFree = false;
                 ChangeStats(15, -5, 0, 0);
             }
             else if (building == "pier" && typeOfTile == "water" && player.wood >= 50)
             {
-                GetComponent<MeshRenderer>().material.color = Color.blue;
+                GetComponent<MeshRenderer>().material.color = Color.blue;                                   //ТУТ НЕ ХВАТАЕТ МОДЕЛИ ПРИЧАЛА!!!!!!!!!!!!
                 player.GiveResourses(0, 50, 0, 0);
                 isFree = false;
                 ChangeStats(2, 1, 0, 0);
             }
             else if (building == "sawmill" && typeOfTile == "forest" && player.minerals >= 25 && player.food >= 45)
             {
-                GetComponent<MeshRenderer>().material.color = Color.red;
+                GetComponent<MeshRenderer>().material.color = Color.red;                                    //А ТУТ МОДЕЛИ ЛЕСОПИЛКИ
                 player.GiveResourses(0,0,45,25);
                 isFree = false;
                 ChangeStats(1, 0, 5, -1);
@@ -208,19 +232,24 @@ public class TileController : MonoBehaviour
         {
             if (building == "farm")
             {
-                GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+                //GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+                SetMesh(6);
                 isFree = false;
                 ChangeStats(0, 3, 0, 0);
             }
             else if (building == "mine")
             {
-                GetComponent<MeshRenderer>().material.color = Color.black;
+                //GetComponent<MeshRenderer>().material.color = Color.black;
+                SetMesh(5);
+                
                 isFree = false;
                 ChangeStats(1, -1, 0, 3);
             }
             else if (building == "town")
             {
-                GetComponent<MeshRenderer>().material.color = Color.gray;
+                //GetComponent<MeshRenderer>().material.color = Color.gray;
+                SetMesh(7);
+                
                 isFree = false;
                 ChangeStats(15, -5, 0, 0);
             }

@@ -69,7 +69,7 @@ public class AIController : MonoBehaviour
                     if (CheckTile(tile))
                     {
                         influensePoints -= tile.needInfluenceToTakeOver;
-                        tile.needInfluenceToTakeOver = influensePoints / 2;
+                        tile.needInfluenceToTakeOver += influensePoints / 2;
                         tile.ChangeOwner(Color.red, playerTeam);
                         timeToMove = true;
                         break;
