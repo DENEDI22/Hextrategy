@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class TileController : MonoBehaviour
 {
@@ -27,10 +29,15 @@ public class TileController : MonoBehaviour
 
     public int needInfluenceToTakeOver = 10;
 
+    [SerializeField]
+    TextMeshPro info;
+
+    [SerializeField]
+    GameObject particles;
 
     int tmpGeneration;
     int buildingGeneration;
-    bool canTakeOver;
+    bool canTakeOver = false;
     void Start()
     {
         if (isCapital)
@@ -119,6 +126,22 @@ public class TileController : MonoBehaviour
     }
 
 
+    void ShowInfo()
+    {
+        info.text = "IP: " + givesIP.ToString() + "; Wood: " + givesWood.ToString() + "; \r\n Food:" + givesFood.ToString() + "; Minerals" + givesMinerals + "\r\n Forse: " + needInfluenceToTakeOver;
+        info.gameObject.SetActive(true);
+        info.GetComponent<Animator>().SetTrigger("Show");
+
+    }
+
+    private void OnMouseEnter()
+    {
+        particles.SetActive(true);
+    }
+    private void OnMouseExit()
+    {
+        particles.SetActive(false);
+    }
 
     private void OnMouseDown()
     {
@@ -141,6 +164,7 @@ public class TileController : MonoBehaviour
         {
             Debug.Log("you don't have enough influence, " + needInfluenceToTakeOver.ToString() + " needed");
         }
+        canTakeOver = false;
     }
 
     private void OnMouseOver()
@@ -151,7 +175,11 @@ public class TileController : MonoBehaviour
             AddBuilding(player.GoingToBuild, true);
             player.GoingToBuild = null;
             Debug.Log("building....");
-        }   
+        }
+        if (Input.GetMouseButtonDown(2))
+        {
+            ShowInfo();
+        }
     }
 
     public void ChangeOwner(Color color, string Team)
@@ -187,6 +215,7 @@ public class TileController : MonoBehaviour
                 SetMesh(6);
                 //TUT BUDUT OVTSI
                 player.GiveResourses(0, 60, 0, 0);
+                needInfluenceToTakeOver += 10 + player.influensePoints / 3;
                 isFree = false;
                 ChangeStats(0, 3, 0, 0);
                 Debug.Log("built");
@@ -195,7 +224,7 @@ public class TileController : MonoBehaviour
             {
                 //GetComponent<MeshRenderer>().material.color = Color.black;
                 SetMesh(5);
-                
+                needInfluenceToTakeOver += 15 + player.influensePoints / 3;
                 player.GiveResourses(0, 20, 50, 0);
                 isFree = false;
                 ChangeStats(1, -1, 0, 3);
@@ -204,7 +233,7 @@ public class TileController : MonoBehaviour
             {
                 //GetComponent<MeshRenderer>().material.color = Color.gray;
                 SetMesh(7);
-                
+                needInfluenceToTakeOver += 40 + player.influensePoints / 3;
                 player.GiveResourses(0, 50, 70, 50);
                 isFree = false;
                 ChangeStats(15, -5, 0, 0);
@@ -212,13 +241,16 @@ public class TileController : MonoBehaviour
             else if (building == "pier" && typeOfTile == "water" && player.wood >= 50)
             {
                 GetComponent<MeshRenderer>().material.color = Color.blue;                                   //ТУТ НЕ ХВАТАЕТ МОДЕЛИ ПРИЧАЛА!!!!!!!!!!!!
+                needInfluenceToTakeOver += 15 + player.influensePoints / 3;
                 player.GiveResourses(0, 50, 0, 0);
                 isFree = false;
                 ChangeStats(2, 1, 0, 0);
             }
             else if (building == "sawmill" && typeOfTile == "forest" && player.minerals >= 25 && player.food >= 45)
             {
-                GetComponent<MeshRenderer>().material.color = Color.red;                                    //А ТУТ МОДЕЛИ ЛЕСОПИЛКИ
+                //GetComponent<MeshRenderer>().material.color = Color.red;                                    
+                SetMesh(0);
+                needInfluenceToTakeOver += 15 + player.influensePoints / 3;
                 player.GiveResourses(0,0,45,25);
                 isFree = false;
                 ChangeStats(1, 0, 5, -1);
@@ -261,7 +293,8 @@ public class TileController : MonoBehaviour
             }
             else if (building == "sawmill")
             {
-                GetComponent<MeshRenderer>().material.color = Color.red;
+                //GetComponent<MeshRenderer>().material.color = Color.red;
+                SetMesh(0);
                 isFree = false;
                 ChangeStats(1, 0, 5, -1);
             }

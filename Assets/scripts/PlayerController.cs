@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 
 
@@ -23,6 +24,17 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public string GoingToBuild;
     bool timeToCollectResourses = true;
+
+    [Header("UI")]
+    [SerializeField]
+    TextMeshProUGUI IP;
+    [SerializeField]
+    TextMeshProUGUI woodUI;
+    [SerializeField]
+    TextMeshProUGUI foodUI;
+    [SerializeField]
+    TextMeshProUGUI mineralsUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,20 +65,41 @@ public class PlayerController : MonoBehaviour
     {
         GoingToBuild = building;
         buildingMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
+    void ToggleTime()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            Debug.Log("Time runned");
+        }
+        else
+        {
+            Time.timeScale = 0;
+            Debug.Log("Time stopped");
+        }
+    }
     public void Loos()
     {
         DefeatPanel.SetActive(true);
         Time.timeScale = 0;
     }
 
+    public void ShowMenu(GameObject menu)
+    {
+        ToggleTime();
+        menu.SetActive(!buildingMenu.activeInHierarchy);
+    }
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            buildingMenu.SetActive(!buildingMenu.activeInHierarchy);
-        }
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    ToggleTime();
+        //    buildingMenu.SetActive(!buildingMenu.activeInHierarchy);
+
+        //}
         if (Input.GetKeyDown(KeyCode.Escape) && GoingToBuild != null)
         {
             GoingToBuild = null;
@@ -80,6 +113,10 @@ public class PlayerController : MonoBehaviour
         {
             Loos();
         }
+        IP.text = influensePoints.ToString();
+        woodUI.text = wood.ToString();
+        foodUI.text = food.ToString();
+        mineralsUI.text = minerals.ToString();
     }
 
 }

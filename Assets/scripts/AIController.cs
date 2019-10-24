@@ -112,32 +112,38 @@ public class AIController : MonoBehaviour
         if (wood >= 50 && food >= 70 && minerals >= 50)
         {
             GiveResourses(0, 50, 70, 50);
+            tile.needInfluenceToTakeOver += 40 + influensePoints / 3;
             GoingToBuild = "town";
         }
         else if (influensePoints < wood && influensePoints < food && influensePoints < minerals && tile.typeOfTile == "water" && wood >= 50)
         {
             GiveResourses(0, 50, 0, 0);
             GoingToBuild = "pier";
+            tile.needInfluenceToTakeOver += 15 + influensePoints / 3;
         }
         else if (influensePoints < wood && influensePoints < food && influensePoints < minerals && influensePoints >= 100 && wood >= 50 && food >= 70 && minerals >= 50)
         {
             GiveResourses(75, 50, 70, 50);
             GoingToBuild = "town";
+            tile.needInfluenceToTakeOver += 40 + influensePoints / 3;
         }
         else if (wood < influensePoints && wood < food && wood < minerals && tile.typeOfTile == "forest" && minerals >= 25 && food >= 45)
         {
             GiveResourses(0, 0, 45, 25);
             GoingToBuild = "sawmill";
+            tile.needInfluenceToTakeOver += 15 + influensePoints / 3;
         }
         else if (food < influensePoints && food < wood && food < minerals && tile.typeOfTile != "water" && wood >= 60)
         {
             GiveResourses(0, 60, 0, 0);
             GoingToBuild = "farm";
+            tile.needInfluenceToTakeOver += 10 + influensePoints / 3;
         }
         else if (minerals < influensePoints && minerals < food && minerals < wood && wood >= 20 && food >= 50)
         {
             GiveResourses(0, 20, 50, 0);
             GoingToBuild = "mine";
+            tile.needInfluenceToTakeOver += 12 + influensePoints / 3;
         }
         else
         {
@@ -147,12 +153,12 @@ public class AIController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (timeToMove)
+        if (timeToMove && influensePoints >= 0 && food >= 0 && wood >= 0 && minerals >= 0)
         {
             Invoke("Move", 1);
             timeToMove = false;
         }
-        if (timeToCollectResourses)
+        if (timeToCollectResourses && influensePoints >= 0 && food >= 0 && wood >= 0 && minerals >= 0)
         {
             Invoke("CollectResourses", 2f);
             timeToCollectResourses = false;
