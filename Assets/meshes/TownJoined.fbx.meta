@@ -1,27 +1,37 @@
 fileFormatVersion: 2
-guid: 76dd7ef0c543cb64292ed8f4b9a044fc
+guid: 59f4741e6e203f14c92053b151241076
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Material.014
-    2100002: Material
-    2100004: Material.005
-    2100006: Material.004
-    2100008: Material.013
-    2100010: Material.009
-    2100012: Material.008
-    2100014: Material.006
-    2100016: Material.011
-    2100018: Material.003
-    2100020: Material.001
-    2100022: Material.010
-    2100024: Material.002
+    2100000: Holz
+    2100002: Material.004
+    2100004: Material.003
+    2100006: Material.002
+    2100008: VillaggioAlberoFoglie.001
+    2100010: VillaggioAlberoTronco.001
+    2100012: Material.001
+    2100014: Material.005
+    2100016: Stroh
+    2100018: Backstein
+    2100020: Material.006
+    2100022: VillaggioBase
+    2100024: Material
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cylinder.004
+    4300000: Cube.030
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Backstein
+    second: {fileID: 2100000, guid: 9deb85dc95988ec439dbfeb2336e321d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Holz
+    second: {fileID: 2100000, guid: 57cc91920b3da8f4e9af7352c330a254, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -60,38 +70,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.008
-    second: {fileID: 2100000, guid: f129906e2547ad24d9e2d3309b13a985, type: 2}
+      name: Stroh
+    second: {fileID: 2100000, guid: ec6ac733fcf758649a624fb77dab5de2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.009
-    second: {fileID: 2100000, guid: 0381d0cef12d9494e8f1a53a5ae13c24, type: 2}
+      name: VillaggioAlberoFoglie.001
+    second: {fileID: 2100000, guid: b11433f791245eb4cba7f1fc60743d1f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.010
-    second: {fileID: 2100000, guid: dd644b6358c67084183d2e650c9a23d5, type: 2}
+      name: VillaggioAlberoTronco.001
+    second: {fileID: 2100000, guid: a59650442383d014d8914d122c5b1190, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.011
-    second: {fileID: 2100000, guid: a8bf63ee35aa45046b0095c5097c5c1c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.013
-    second: {fileID: 2100000, guid: c0226c0ecccb9ec458a716e7dff453e2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.014
-    second: {fileID: 2100000, guid: 473365528df16d9459e632d133bf7691, type: 2}
+      name: VillaggioBase
+    second: {fileID: 2100000, guid: accaa3f9825446d48bfa2afb577a0347, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -126,7 +126,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

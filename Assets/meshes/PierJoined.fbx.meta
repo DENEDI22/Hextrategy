@@ -1,21 +1,65 @@
 fileFormatVersion: 2
-guid: f056d03c0df66734793b56a4d309e3e6
+guid: 98e2ddf903d7baa489b3d34a4c198ae6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Material.001
-    2100002: AlberoTronco
-    2100004: AlberoFoglie
-    2100006: Staccionata
+    2100000: Material.012
+    2100002: Material.013
+    2100004: Material
+    2100006: Material.011
+    2100008: Material.010
+    2100010: Material.001
+    2100012: Material.009
+    2100014: Material.003
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Base
-  externalObjects: {}
+    4300000: Plane.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: e1e4e67a8873a7f459494123c1c9cadf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: b8fa9e267b963394280553b7219314e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 76219c7163794834eb42337b8e1b8945, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: 78c43bac5feb819459881c2e94a68a93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: 823a1dfbd54e5b94fae480ea3e9f7430, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: 655ce623e6759134d9103f37433400d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: 848529f1f8c20c9449cec03769ec0675, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.013
+    second: {fileID: 2100000, guid: 30742feed1da7154783172f983c91a3c, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 2
     materialSearch: 1
     materialLocation: 1
   animations:

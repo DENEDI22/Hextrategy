@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: f056d03c0df66734793b56a4d309e3e6
+guid: bed6bd72fa7af7242b575913515a272d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Material.001
-    2100002: AlberoTronco
-    2100004: AlberoFoglie
-    2100006: Staccionata
+    2100000: PecoraManto
+    2100002: PecoraOcchi
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Base
+    4300000: Pecora.002
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -52,7 +50,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

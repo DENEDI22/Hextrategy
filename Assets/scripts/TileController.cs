@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
+
+[System.Serializable]
+public class OnTileTakeOver : UnityEvent
+{
+    
+}
 
 public class TileController : MonoBehaviour
 {
-
+    public OnTileTakeOver OnTileTakeOver;
 
     public string team = "neutral";
     public bool isCapital = false;
@@ -14,7 +21,6 @@ public class TileController : MonoBehaviour
     public GameObject flag;
     public bool isFree;
     public PlayerController player;
-
 
     [SerializeField]
     public TileController[] neighbour;
@@ -125,7 +131,6 @@ public class TileController : MonoBehaviour
         }
     }
 
-
     void ShowInfo()
     {
         info.text = "IP: " + givesIP.ToString() + "; Wood: " + givesWood.ToString() + "; \r\n Food:" + givesFood.ToString() + "; Minerals" + givesMinerals + "\r\n Forse: " + needInfluenceToTakeOver;
@@ -138,6 +143,7 @@ public class TileController : MonoBehaviour
     {
         particles.SetActive(true);
     }
+
     private void OnMouseExit()
     {
         particles.SetActive(false);
@@ -153,7 +159,12 @@ public class TileController : MonoBehaviour
                 break;
             }
         }
-
+        if (player.GoingToBuild != null)
+        {
+            AddBuilding(player.GoingToBuild, true);
+            player.GoingToBuild = null;
+            Cursor.SetCursor(player.cursor, Vector2.zero, CursorMode.Auto);
+        }
         if (canTakeOver && player.influensePoints >= needInfluenceToTakeOver && team != player.playerTeam)
         {
             player.GiveResourses(needInfluenceToTakeOver, 0, 0, 0);
@@ -174,6 +185,7 @@ public class TileController : MonoBehaviour
 
             AddBuilding(player.GoingToBuild, true);
             player.GoingToBuild = null;
+            Cursor.SetCursor(player.cursor, Vector2.zero, CursorMode.Auto);
             Debug.Log("building....");
         }
         if (Input.GetMouseButtonDown(2))
@@ -186,6 +198,7 @@ public class TileController : MonoBehaviour
     {
         flag.GetComponent<MeshRenderer>().material.color = color;
         team = Team;
+        OnTileTakeOver.Invoke();
     }
 
     void ChangeStats(int IP, int Food, int Wood, int Minerals)
@@ -229,6 +242,20 @@ public class TileController : MonoBehaviour
                 isFree = false;
                 ChangeStats(1, -1, 0, 3);
             }
+            else if (building == "forest" && player.food >= 25 && typeOfTile == "field")
+            {
+                SetMesh(3);
+                needInfluenceToTakeOver += 2 + player.influensePoints / 3;
+                player.GiveResourses(0, 0, 25, 0);
+                typeOfTile = "forest";
+            }
+            else if (building == "water" && player.food >= 25 && typeOfTile == "field")
+            {
+                SetMesh(4);
+                needInfluenceToTakeOver += 2 + player.influensePoints / 3;
+                player.GiveResourses(0, 0, 25, 0);
+                typeOfTile = "water";
+            }
             else if (building == "town"  && player.wood >= 50 && player.food >= 70 && player.minerals >= 50)
             {
                 //GetComponent<MeshRenderer>().material.color = Color.gray;
@@ -240,7 +267,7 @@ public class TileController : MonoBehaviour
             }
             else if (building == "pier" && typeOfTile == "water" && player.wood >= 50)
             {
-                GetComponent<MeshRenderer>().material.color = Color.blue;                                   //ТУТ НЕ ХВАТАЕТ МОДЕЛИ ПРИЧАЛА!!!!!!!!!!!!
+                SetMesh(8);
                 needInfluenceToTakeOver += 15 + player.influensePoints / 3;
                 player.GiveResourses(0, 50, 0, 0);
                 isFree = false;
@@ -285,9 +312,19 @@ public class TileController : MonoBehaviour
                 isFree = false;
                 ChangeStats(15, -5, 0, 0);
             }
+            else if (building == "forest")
+            {
+                SetMesh(3);
+                typeOfTile = "forest";
+            }
+            else if (building == "water")
+            {
+                SetMesh(4);
+                typeOfTile = "water";
+            }
             else if (building == "pier")
             {
-                GetComponent<MeshRenderer>().material.color = Color.blue;
+                SetMesh(8); 
                 isFree = false;
                 ChangeStats(2, 1, 0, 0);
             }
@@ -309,6 +346,6 @@ public class TileController : MonoBehaviour
 
     void Update()
     {
-        
+        info.transform.LookAt(-player.transform.position);
     }
 }
